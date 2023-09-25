@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 const scrapDia = async () => {
   let products = [];
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await browser.newPage();
   page.setDefaultNavigationTimeout(0); // Disable timeout
   await page.goto('https://www.dia.es/charcuteria-y-quesos/jamon-cocido-lacon-fiambres-y-mortadela/c/L2001');

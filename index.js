@@ -1,10 +1,6 @@
 require('dotenv').config();
 
 const { scrapDia } = require('./src/scrappers/dia.js');
-const mongoose = require('mongoose');
-const Product = require('./src/models/Product.js');
-
-const database_url = process.env.DATABASE_URL || 'mongodb://localhost:27017';
 
 const test = [
   {
@@ -58,18 +54,10 @@ const test = [
 ];
 
 try {
-  mongoose.connect(
-    database_url,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  );
+
 } catch (e) {
   console.log(e);
 }
-
-const db = mongoose.connection;
-
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('Connected to database'));
 
 scrapDia().then((data) => {
   data.forEach(e => {
