@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const { scrapDia } = require('./src/scrappers/dia.js');
+const { supabase } = require('./supabaseClient.js');
 
 const test = [
   {
@@ -13,7 +14,7 @@ const test = [
       salt: '3.4'
     },
     url: 'https://www.dia.es/charcuteria-y-quesos/lomo-chorizo-fuet-salchichon/p/274141?analytics_list_id=L2005&analytics_list_name=charcuteria_y_quesos_lomo_chorizo_fuet_salchichon&index=8',
-    price: '1.69 ',
+    price: '1.69',
     price_per_kg: '8.45',
     brand: ' ',
     category: 'Charcutería y quesos',
@@ -29,7 +30,7 @@ const test = [
       salt: '5'
     },
     url: 'https://www.dia.es/charcuteria-y-quesos/lomo-chorizo-fuet-salchichon/p/274137?analytics_list_id=L2005&analytics_list_name=charcuteria_y_quesos_lomo_chorizo_fuet_salchichon&index=9',
-    price: '2.19 ',
+    price: '2.19',
     price_per_kg: '12.88',
     brand: ' ',
     category: 'Charcutería y quesos',
@@ -45,7 +46,7 @@ const test = [
       salt: '3.5'
     },
     url: 'https://www.dia.es/charcuteria-y-quesos/lomo-chorizo-fuet-salchichon/p/273991?analytics_list_id=L2005&analytics_list_name=charcuteria_y_quesos_lomo_chorizo_fuet_salchichon&index=10',
-    price: '2.45 ',
+    price: '2.45',
     price_per_kg: '12.25',
     brand: ' ',
     category: 'Charcutería y quesos',
@@ -53,16 +54,14 @@ const test = [
   }
 ];
 
-try {
 
-} catch (e) {
-  console.log(e);
-}
 
-scrapDia().then((data) => {
-  data.forEach(e => {
-    const product = new Product(e);
-    product.save();
-    console.log('saved');
-  });
-});
+// scrapDia().then((data) => {
+//   data.forEach(e => {
+//     supabase
+//       .from('products')
+//       .insert(e)
+//       .then(console.log)
+//       .catch(console.error);
+//   });
+// });
