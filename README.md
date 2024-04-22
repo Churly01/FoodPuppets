@@ -4,6 +4,7 @@ Scripts to scrape information from main food distributors in Spain such as Dia, 
 
 DONE:
   - Dia
+
 TODO:
   - Alcampo
   - Carrefour
